@@ -1,0 +1,3 @@
+[submodule "packages/LayerZero-v2"]
+	path = packages/LayerZero-v2
+	url = https://github.com/LayerZero-Labs/LayerZero-v2
