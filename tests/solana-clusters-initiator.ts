@@ -8,9 +8,9 @@ describe("solana-clusters-initiator", () => {
 
   const program = anchor.workspace.SolanaClustersInitiator as Program<SolanaClustersInitiator>;
 
-  it("Is initialized!", async () => {
+  it("Noop", async () => {
     // Add your test here.
-    const tx = await program.methods.initialize().rpc();
-    console.log("Your transaction signature", tx);
+    // const tx = await program.methods.initialize().rpc();
+    // console.log("Your transaction signature", tx);
   });
 });

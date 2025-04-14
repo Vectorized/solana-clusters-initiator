@@ -10,7 +10,7 @@ use state::*;
 const INITIATOR_SEED: &[u8] = b"Initiator";
 const PEER_SEED: &[u8] = b"Peer";
 
-declare_id!("9p5BdrLTzrLyF43zLQWVggRJ36ZK3BBMX6F6bXcmFmdg");
+declare_id!("eDawZydN4oExTTkLpvRYFGSj7xVpdRHfwrQUp2LDjRd");
 
 #[program]
 pub mod solana_clusters_initiator {

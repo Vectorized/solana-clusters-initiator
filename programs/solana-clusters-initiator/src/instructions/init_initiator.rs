@@ -28,6 +28,7 @@ impl InitInitiator<'_> {
 
         let register_params = RegisterOAppParams { delegate: ctx.accounts.initiator.admin };
         let seeds: &[&[u8]] = &[INITIATOR_SEED, &[ctx.accounts.initiator.id], &[ctx.accounts.initiator.bump]];
+        
         oapp::endpoint_cpi::register_oapp(
             ENDPOINT_ID,
             ctx.accounts.initiator.key(),
