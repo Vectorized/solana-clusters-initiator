@@ -40,21 +40,19 @@ import { SolanaClustersInitiator } from "../target/types/solana_clusters_initiat
       })
       // ??? Obviously this doesn't work. I need to find the exact accounts to pass in.
       .remainingAccounts([
-        {
-          pubkey: endpoint,
-          isWritable: false,
-          isSigner: false,
-        },
+        // delegate.
         {
           pubkey: deployerKeypair.publicKey,
           isWritable: true,
           isSigner: true,
         },
+        // payer.
         {
-          pubkey: initiatorPDA,
+          pubkey: deployerKeypair.publicKey,
           isWritable: true,
-          isSigner: false,
+          isSigner: true,
         },
+        // OApp.
         {
           pubkey: initiatorPDA,
           isWritable: true,
