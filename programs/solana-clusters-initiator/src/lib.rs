@@ -1,20 +1,14 @@
-mod errors;
-mod instructions;
 mod msg_codec;
+mod instructions;
 mod state;
 
 use anchor_lang::prelude::*;
-use errors::*;
 use instructions::*;
-use oapp::{endpoint::MessagingFee, endpoint_cpi::LzAccount, LzComposeParams, LzReceiveParams};
-use solana_helper::program_id_from_env;
+use oapp::{endpoint::MessagingFee};
 use state::*;
 
-const LZ_RECEIVE_TYPES_SEED: &[u8] = b"LzReceiveTypes";
-const LZ_COMPOSE_TYPES_SEED: &[u8] = b"LzComposeTypes";
-const COUNT_SEED: &[u8] = b"Count";
+const INITIATOR_SEED: &[u8] = b"Initiator";
 const PEER_SEED: &[u8] = b"Peer";
-const NONCE_SEED: &[u8] = b"Nonce";
 
 declare_id!("9p5BdrLTzrLyF43zLQWVggRJ36ZK3BBMX6F6bXcmFmdg");
 
@@ -22,9 +16,20 @@ declare_id!("9p5BdrLTzrLyF43zLQWVggRJ36ZK3BBMX6F6bXcmFmdg");
 pub mod solana_clusters_initiator {
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        msg!("Greetings from: {:?}", ctx.program_id);
-        Ok(())
+    pub fn init_initiator(mut ctx: Context<InitInitiator>, params: InitInitiatorParams) -> Result<()> {
+        InitInitiator::apply(&mut ctx, &params)
+    }
+    
+    pub fn set_peer(mut ctx: Context<SetPeer>, params: SetPeerParams) -> Result<()> {
+        SetPeer::apply(&mut ctx, &params)
+    }
+
+    pub fn quote(ctx: Context<Quote>, params: QuoteParams) -> Result<MessagingFee> {
+        Quote::apply(&ctx, &params)
+    }
+
+    pub fn post(mut ctx: Context<Post>, params: PostParams) -> Result<()> {
+        Post::apply(&mut ctx, &params)
     }
 }
 

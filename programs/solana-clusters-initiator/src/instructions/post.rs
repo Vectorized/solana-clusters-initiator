@@ -5,36 +5,36 @@ use oapp::endpoint::{
 };
 
 #[derive(Accounts)]
-#[instruction(params: IncrementParams)]
-pub struct Increment<'info> {
+#[instruction(params: PostParams)]
+pub struct Post<'info> {
+    #[account(mut)]
+    pub user: Signer<'info>,
+
     #[account(
         seeds = [
             PEER_SEED,
-            &count.key().to_bytes(),
+            &initiator.key().to_bytes(),
             &params.dst_eid.to_be_bytes()
         ],
         bump = peer.bump
     )]
     pub peer: Account<'info, Peer>,
 
-    #[account(seeds = [COUNT_SEED, &count.id.to_be_bytes()], bump = count.bump)]
-    pub count: Account<'info, Count>,
+    #[account(seeds = [INITIATOR_SEED, &initiator.id.to_be_bytes()], bump = initiator.bump)]
+    pub initiator: Account<'info, Initiator>,
     
     #[account(seeds = [ENDPOINT_SEED], bump = endpoint.bump, seeds::program = ENDPOINT_ID)]
     pub endpoint: Account<'info, EndpointSettings>,
 }
 
-impl<'info> Increment<'info> {
-    pub fn apply(ctx: &mut Context<Increment>, params: &IncrementParams) -> Result<()> {
-        let message = msg_codec::encode(params.msg_type, ctx.accounts.endpoint.eid);
-        
-        let seeds: &[&[u8]] = &[COUNT_SEED, &[ctx.accounts.count.id], &[ctx.accounts.count.bump]];
+impl<'info> Post<'info> {
+    pub fn apply(ctx: &mut Context<Post>, params: &PostParams) -> Result<()> {        
+        let seeds: &[&[u8]] = &[INITIATOR_SEED, &[ctx.accounts.initiator.id], &[ctx.accounts.initiator.bump]];
 
-        // calling endpoint cpi
         let send_params = SendParams {
             dst_eid: params.dst_eid,
             receiver: ctx.accounts.peer.address,
-            message,
+            message: msg_codec::encode(&ctx.accounts.user.key().to_bytes(), &params.msg),
             options: params.options.clone(),
             native_fee: params.native_fee,
             lz_token_fee: params.lz_token_fee,
@@ -42,7 +42,7 @@ impl<'info> Increment<'info> {
 
         oapp::endpoint_cpi::send(
             ENDPOINT_ID,
-            ctx.accounts.count.key(),
+            ctx.accounts.initiator.key(),
             ctx.remaining_accounts,
             seeds,
             send_params,
@@ -53,9 +53,9 @@ impl<'info> Increment<'info> {
 }
 
 #[derive(Clone, AnchorSerialize, AnchorDeserialize)]
-pub struct IncrementParams {
+pub struct PostParams {
     pub dst_eid: u32,
-    pub msg_type: u8,
+    pub msg: Vec<u8>,
     pub options: Vec<u8>,
     pub native_fee: u64,
     pub lz_token_fee: u64,

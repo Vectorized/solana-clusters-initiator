@@ -1,25 +1,19 @@
-pub const VANILLA_TYPE: u8 = 1;
-pub const COMPOSED_TYPE: u8 = 2;
-// ABA_TYPE & COMPOSED_ABA_TYPE are not supported
-// pub const ABA_TYPE: u8 = 3;
-// pub const COMPOSED_ABA_TYPE: u8 = 4;
+pub fn u64_to_be_bytes32(value: u64) -> [u8; 32] {
+    let mut bytes = [0u8; 32];
+    for i in 0..8 {
+        bytes[31 - i] = (value >> (8 * i)) as u8;
+    }
+    bytes
+}
 
-pub const MSG_TYPE_OFFSET: usize = 0;
-pub const SRC_EID_OFFSET: usize = 1;
-
-pub fn encode(msg_type: u8, src_eid: u32) -> Vec<u8> {
+// `abi.encode(bytes32(user), msg)`.
+pub fn encode(user: &[u8; 32], msg: &Vec<u8>) -> Vec<u8> {
     let mut encoded = Vec::new();
-    encoded.push(msg_type);
-    encoded.extend_from_slice(&src_eid.to_be_bytes());
+    encoded.extend_from_slice(user);
+    encoded.extend_from_slice(&u64_to_be_bytes32(0x20));
+    encoded.extend_from_slice(&u64_to_be_bytes32(msg.len() as u64));
+    encoded.extend_from_slice(msg);
+    let padding_needed = (32 - (msg.len() % 32)) % 32;
+    encoded.extend_from_slice(&vec![0u8; padding_needed]);
     encoded
-}
-
-pub fn msg_type(message: &[u8]) -> u8 {
-    message[MSG_TYPE_OFFSET]
-}
-
-pub fn src_eid(message: &[u8]) -> u32 {
-    let mut eid_bytes = [0; 4];
-    eid_bytes.copy_from_slice(&message[SRC_EID_OFFSET..]);
-    u32::from_be_bytes(eid_bytes)
 }
