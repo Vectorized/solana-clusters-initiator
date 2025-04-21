@@ -7,16 +7,17 @@ const { setup } = require("./common");
     anchor.setProvider(provider);
     const common = setup();
 
-    const registerOappIxAccounts = common.endpoint.getRegisterOappIxAccountMetaForCPI(
-      common.deployerKeypair.publicKey, 
-      common.initiatorPDA
-    ).map((acc) => {
-      return {
-        pubkey: acc.pubkey,
-        isSigner: acc.isSigner,
-        isWritable: acc.isWritable,
-      }
-    });
+    const registerOappIxAccounts = common.endpoint
+      .getRegisterOappIxAccountMetaForCPI(
+        common.deployerKeypair.publicKey, 
+        common.initiatorPDA
+      ).map((acc) => {
+        return {
+          pubkey: acc.pubkey,
+          isSigner: acc.isSigner,
+          isWritable: acc.isWritable,
+        }
+      });
 
     console.log("Register Oapp Instruction Accounts:", registerOappIxAccounts);
   

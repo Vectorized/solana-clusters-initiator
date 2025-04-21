@@ -14,47 +14,29 @@ import {
     const connection = provider.connection;
 
     console.log(common.initiatorPDA);
-    console.log(
-      await common.endpoint.getSendLibrary(
+    const sendLib = await common.endpoint
+      .getSendLibrary(
         connection,
         common.initiatorPDA,
         common.PEER_EVM_EID,
-      )
-    );
-    // const additionalAccounts = await common.endpoint.getQuoteIXAccountMetaForCPI(
-    //   connection,
-    //   common.deployerKeypair.publicKey, // Replace with the sender's public key.
-    //   {
-    //     dstEid: common.PEER_EVM_EID,
-    //     srcEid: common.SOLANA_EID,
-    //     sender: common.hexlify(common.initiatorPDA.toBytes()),
-    //     receiver: common.PEER_EVM_ADDRESS_BYTES,
-    //   },
-    //   new UlnProgram.Uln(
-    //     (
-    //       await common.endpoint.getSendLibrary(
-    //         connection,
-    //         common.initiatorPDA,
-    //         common.PEER_EVM_EID,
-    //       )
-    //     ).programId,
-    //   ),
-    // );
-    // console.log(additionalAccounts);
-
-    return;
-
-    const quoteIxAccounts = await common.endpoint.getQuoteIXAccountMetaForCPI(
-      common.deployerKeypair.publicKey, 
-      common.initiatorPDA
-    ).map((acc) => {
-      return {
-        pubkey: acc.pubkey,
-        isSigner: acc.isSigner,
-        isWritable: acc.isWritable,
-      }
-    });
+      );
     
+    const payer = common.deployerKeypair.publicKey;
+    const remainingAccounts = await common.endpoint.getQuoteIXAccountMetaForCPI(
+      connection,
+      payer,
+      {
+        dstEid: common.PEER_EVM_EID,
+        srcEid: common.SOLANA_EID,
+        sender: common.hexlify(common.initiatorPDA.toBytes()),
+        receiver: common.PEER_EVM_ADDRESS,
+      },
+      new UlnProgram.Uln(
+        sendLib.programId
+      ),
+    );
+    console.log(remainingAccounts);
+
     const { result, logs } = await common.program.methods
       .quote({
         dstEid: common.PEER_EVM_EID,
@@ -67,7 +49,7 @@ import {
       .accounts({
         initiator: common.initiatorPDA, 
       })
-      .remainingAccounts(quoteIxAccounts) // <-???
+      .remainingAccounts(remainingAccounts) 
       .signers([common.deployerKeypair])
       .simulate();
 

@@ -5,6 +5,7 @@ import * as fs from "fs";
 import { SolanaClustersInitiator } from "../target/types/solana_clusters_initiator";
 import { EndpointPDADeriver, EndpointProgram } from '@layerzerolabs/lz-solana-sdk-v2'
 import { arrayify, hexZeroPad } from "@ethersproject/bytes";
+import { buildVersionedTransaction } from "@layerzerolabs/lz-solana-sdk-v2";
 
 function setup() {
   const eids = {
@@ -58,9 +59,25 @@ function setup() {
       hex += byte.toString(16).padStart(2, "0");
     }
     return "0x" + hex;
+  };
+
+  const sendAndConfirm = async (connection, signers, instructions) => {
+    const tx = await buildVersionedTransaction(
+      connection as any,
+      signers[0].publicKey,
+      instructions,
+      "confirmed"
+    );
+    tx.sign(signers);
+    const hash = await connection.sendRawTransaction(tx.serialize(), {
+      skipPreflight: true,
+    });
+    console.log(`Tx hash: ${hash}`);
+    await connection.confirmTransaction(hash, "confirmed");
   }
   
   return {
+    sendAndConfirm,
     hexlify,
     SOLANA_EID,
     PEER_SEED,
