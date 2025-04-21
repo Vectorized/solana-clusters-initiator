@@ -10,14 +10,18 @@ use oapp::endpoint::{
 pub struct Quote<'info> {
     #[account(seeds = [INITIATOR_SEED, &initiator.id.to_be_bytes()], bump = initiator.bump)]
     pub initiator: Account<'info, Initiator>,
+}
 
-    #[account(seeds = [ENDPOINT_SEED], bump = endpoint.bump, seeds::program = ENDPOINT_ID)]
-    pub endpoint: Account<'info, EndpointSettings>,
+#[error_code]
+pub enum QuoteError {
+    InvalidEndpoint,
 }
 
 impl<'info> Quote<'info> {
     pub fn apply(ctx: &Context<Quote>, params: &QuoteParams) -> Result<MessagingFee> {
-        // A random user public key with incompressible bytes.
+        require!(ctx.accounts.initiator.endpoint_program == params.endpoint, QuoteError::InvalidEndpoint);
+
+        // A random user public key with incompressible bytes, just to get a quote.
         let random_user: [u8; 32] = [
             0xC3, 0xA7, 0x58, 0x9D, 0x2E, 0xB4, 0x61, 0xF5,
             0x82, 0x1C, 0x3F, 0xD6, 0x4A, 0xE9, 0x75, 0x0B,
@@ -44,4 +48,5 @@ pub struct QuoteParams {
     pub msg: Vec<u8>,
     pub options: Vec<u8>,
     pub pay_in_lz_token: bool,
+    pub endpoint: Pubkey,
 }

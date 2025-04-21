@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.29.0",
+    "@ethersproject/bytes": "^5.8.0",
     "@layerzerolabs/lz-solana-sdk-v2": "^3.0.88"
   },
   "devDependencies": {

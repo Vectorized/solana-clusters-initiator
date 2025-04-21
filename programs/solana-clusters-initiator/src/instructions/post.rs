@@ -22,13 +22,17 @@ pub struct Post<'info> {
 
     #[account(seeds = [INITIATOR_SEED, &initiator.id.to_be_bytes()], bump = initiator.bump)]
     pub initiator: Account<'info, Initiator>,
-    
-    #[account(seeds = [ENDPOINT_SEED], bump = endpoint.bump, seeds::program = ENDPOINT_ID)]
-    pub endpoint: Account<'info, EndpointSettings>,
+}
+
+#[error_code]
+pub enum PostError {
+    InvalidEndpoint,
 }
 
 impl<'info> Post<'info> {
-    pub fn apply(ctx: &mut Context<Post>, params: &PostParams) -> Result<()> {        
+    pub fn apply(ctx: &mut Context<Post>, params: &PostParams) -> Result<()> {     
+        require!(ctx.accounts.initiator.endpoint_program == params.endpoint, PostError::InvalidEndpoint);
+
         let seeds: &[&[u8]] = &[INITIATOR_SEED, &[ctx.accounts.initiator.id], &[ctx.accounts.initiator.bump]];
 
         let send_params = SendParams {
@@ -59,4 +63,5 @@ pub struct PostParams {
     pub options: Vec<u8>,
     pub native_fee: u64,
     pub lz_token_fee: u64,
+    pub endpoint: Pubkey,
 }
