@@ -3,6 +3,7 @@ import { Program, BN } from "@coral-xyz/anchor";
 import { PublicKey, Keypair } from "@solana/web3.js";
 import * as fs from "fs";
 import { SolanaClustersInitiator } from "../target/types/solana_clusters_initiator";
+import { EndpointPDADeriver, EndpointProgram } from '@layerzerolabs/lz-solana-sdk-v2'
 
 (async () => {
   // Set up the provider
@@ -26,54 +27,33 @@ import { SolanaClustersInitiator } from "../target/types/solana_clusters_initiat
     program.programId
   );
 
-  const endpoint = new PublicKey("76y77prsiCMvXMjuoZ5VRrhG5qYBrUMYTE5WgHqgjEn6");
+  const endpoint = new EndpointProgram.Endpoint(new PublicKey("76y77prsiCMvXMjuoZ5VRrhG5qYBrUMYTE5WgHqgjEn6"));
+
+  const registerOappIxAccounts = endpoint.getRegisterOappIxAccountMetaForCPI(
+    deployerKeypair.publicKey, 
+    initiatorPDA
+  ).map((acc) => {
+    return {
+        pubkey: acc.pubkey,
+        isSigner: acc.isSigner,
+        isWritable: acc.isWritable,
+    }
+  });
+
+  console.log("Register Oapp Instruction Accounts:", registerOappIxAccounts);
+
   try {
     const tx = await program.methods
       .initInitiator({
         id: ID,
         admin: deployerKeypair.publicKey, 
-        endpoint: endpoint,
+        endpoint: endpoint.program,
       })
       .accounts({
         payer: deployerKeypair.publicKey,
         initiator: initiatorPDA, 
       })
-      // ??? Obviously this doesn't work. I need to find the exact accounts to pass in.
-      .remainingAccounts([
-        // delegate.
-        {
-          pubkey: deployerKeypair.publicKey,
-          isWritable: true,
-          isSigner: true,
-        },
-        // payer.
-        {
-          pubkey: deployerKeypair.publicKey,
-          isWritable: true,
-          isSigner: true,
-        },
-        // OApp.
-        {
-          pubkey: initiatorPDA,
-          isWritable: true,
-          isSigner: false,
-        },
-        {
-          pubkey: initiatorPDA,
-          isWritable: true,
-          isSigner: false,
-        },
-        {
-          pubkey: initiatorPDA,
-          isWritable: true,
-          isSigner: false,
-        },
-        {
-          pubkey: anchor.web3.SystemProgram.programId,
-          isWritable: true,
-          isSigner: false,
-        },
-      ])
+      .remainingAccounts(registerOappIxAccounts)
       .signers([deployerKeypair]) // The state account must sign the transaction
       .rpc();
     console.log(`Transaction Signature: ${tx}`);
