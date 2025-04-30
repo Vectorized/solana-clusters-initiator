@@ -4,10 +4,8 @@ use anchor_lang::prelude::*;
 #[derive(Accounts)]
 #[instruction(params: SetPeerParams)]
 pub struct SetPeer<'info> {
-    
     #[account(mut, address = initiator.admin)]
     pub admin: Signer<'info>,
-    
     #[account(
         init_if_needed,
         payer = admin,
@@ -16,10 +14,8 @@ pub struct SetPeer<'info> {
         bump
     )]
     pub peer: Account<'info, Peer>,
-    
-    #[account(seeds = [INITIATOR_SEED, &initiator.id.to_be_bytes()], bump = initiator.bump)]
+    #[account(seeds = [INITIATOR_SEED, &params.id.to_be_bytes()], bump = initiator.bump)]
     pub initiator: Account<'info, Initiator>,
-    
     pub system_program: Program<'info, System>,
 }
 
