@@ -6,15 +6,19 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-solana_clusters_initiator = "eDawZydN4oExTTkLpvRYFGSj7xVpdRHfwrQUp2LDjRd"
+solana_clusters_initiator = "7SbKoJMQXfeA58SZ96ogssFmWczpvFzdgpX5H9z9EtJ4"
+
+[[test.genesis]]
+address = "76y77prsiCMvXMjuoZ5VRrhG5qYBrUMYTE5WgHqgjEn6"
+program = "endpoint.so"
 
 [registry]
 url = "https://api.apr.dev"
 
+
 [provider]
-cluster = "https://api.devnet.solana.com"
-# cluster = "localnet"
-wallet = "./keypairs/deployer.json"
+cluster = "Localnet"
+wallet = "~/.config/solana/id.json"
 
 [scripts]
-test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+test = "yarn run ts-mocha -b -p ./tsconfig.json -t 10000000 tests/**/*.ts"
