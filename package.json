@@ -7,7 +7,8 @@
   "dependencies": {
     "@coral-xyz/anchor": "^0.29.0",
     "@ethersproject/bytes": "^5.8.0",
-    "@layerzerolabs/lz-solana-sdk-v2": "^3.0.88"
+    "@layerzerolabs/lz-solana-sdk-v2": "^3.0.92",
+    "@layerzerolabs/oft-v2-solana-sdk": "^3.0.92"
   },
   "devDependencies": {
     "@types/bn.js": "^5.1.0",

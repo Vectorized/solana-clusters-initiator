@@ -21,6 +21,11 @@ function setup() {
   const INITIATOR_SEED = Buffer.from("Initiator");
   const INITIATOR_ID = 0; 
   const ENDPOINT_PUBLIC_KEY = new PublicKey("76y77prsiCMvXMjuoZ5VRrhG5qYBrUMYTE5WgHqgjEn6");
+  const SEND_LIB_PROGRAM_ID = new PublicKey("7a4WjyR8VZ7yZz5XJAKm39BUGn5iT9CKcv2pmG9tdXVH");
+  const EXECUTOR_PROGRAM_ID = new PublicKey("6doghB248px58JSSwG4qejQ46kFMW4AMj7vzJnWZHNZn");
+  const DVN_PROGRAM_ID = new PublicKey("HtEYV4xB4wvsj5fgTkcfuChYpvGYzgzwvNhgDZQNh7wW");
+  const PRICE_FEED_PROGRAM_ID = new PublicKey("8ahPGPjEbpgGaZx2NV1iG5Shj7TDwvsjkEDcGWjt94TP");
+  
   const PEER_EVM_ADDRESS = "0x581296f83d7464df72ca4f1e840b65633e016ef0";
   const PEER_EVM_ADDRESS_BYTES = Array.from(arrayify(hexZeroPad(PEER_EVM_ADDRESS, 32)));
   const PEER_EVM_EID = eids.BASE_SEPOLIA;
@@ -102,6 +107,10 @@ function setup() {
     INITIATOR_SEED,
     INITIATOR_ID,
     ENDPOINT_PUBLIC_KEY,
+    SEND_LIB_PROGRAM_ID,
+    EXECUTOR_PROGRAM_ID,
+    DVN_PROGRAM_ID,
+    PRICE_FEED_PROGRAM_ID,
     deployerKeypair,
     program,
     initiatorPDA,

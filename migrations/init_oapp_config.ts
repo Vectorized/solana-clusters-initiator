@@ -2,8 +2,10 @@ import * as anchor from "@coral-xyz/anchor";
 const { setup } = require("./common");
 import {
   EndpointProgram,
+  ExecutorPDADeriver,
   simulateTransaction,
   UlnProgram,
+  SetConfigType,
 } from "@layerzerolabs/lz-solana-sdk-v2";
 import { PublicKey, Keypair } from "@solana/web3.js";
 
@@ -16,11 +18,12 @@ import { PublicKey, Keypair } from "@solana/web3.js";
     const ulnProgram = new UlnProgram.Uln(common.SEND_LIB_PROGRAM_ID);
 
     const ix = await common.endpoint
-      .setSendLibrary(
+      .initOAppConfig(
+        common.deployerKeypair.publicKey,
+        ulnProgram,
         common.deployerKeypair.publicKey,
         common.initiatorPDA,
-        ulnProgram.program,
-        common.PEER_EVM_EID
+        common.PEER_EVM_EID,
       );
 
     await common.sendAndConfirm(provider.connection, [common.deployerKeypair], [ix]);

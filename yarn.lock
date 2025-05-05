@@ -103,7 +103,7 @@
     "@ethersproject/logger" "^5.8.0"
     "@ethersproject/properties" "^5.8.0"
 
-"@ethersproject/address@5.8.0", "@ethersproject/address@^5.7.0", "@ethersproject/address@^5.8.0":
+"@ethersproject/address@5.8.0", "@ethersproject/address@^5.8.0":
   version "5.8.0"
   resolved "https://registry.yarnpkg.com/@ethersproject/address/-/address-5.8.0.tgz#3007a2c352eee566ad745dca1dbbebdb50a6a983"
   integrity sha512-GhH/abcC46LJwshoN+uBNoKVFPxUuZm6dA257z0vZkKmU1+t8xTn8oK7B9qrj8W2rFRMch4gbJl6PmVxjxBEBA==
@@ -129,7 +129,7 @@
     "@ethersproject/bytes" "^5.8.0"
     "@ethersproject/properties" "^5.8.0"
 
-"@ethersproject/bignumber@5.8.0", "@ethersproject/bignumber@^5.7.0", "@ethersproject/bignumber@^5.8.0":
+"@ethersproject/bignumber@5.8.0", "@ethersproject/bignumber@^5.8.0":
   version "5.8.0"
   resolved "https://registry.yarnpkg.com/@ethersproject/bignumber/-/bignumber-5.8.0.tgz#c381d178f9eeb370923d389284efa19f69efa5d7"
   integrity sha512-ZyaT24bHaSeJon2tGPKIiHszWjD/54Sz8t57Toch475lCLljC6MgPmxk7Gtzz+ddNN5LuHea9qhAe0x3D+uYPA==
@@ -138,7 +138,7 @@
     "@ethersproject/logger" "^5.8.0"
     bn.js "^5.2.1"
 
-"@ethersproject/bytes@5.8.0", "@ethersproject/bytes@^5.7.0", "@ethersproject/bytes@^5.8.0":
+"@ethersproject/bytes@5.8.0", "@ethersproject/bytes@^5.8.0":
   version "5.8.0"
   resolved "https://registry.yarnpkg.com/@ethersproject/bytes/-/bytes-5.8.0.tgz#9074820e1cac7507a34372cadeb035461463be34"
   integrity sha512-vTkeohgJVCPVHu5c25XWaWQOZ4v+DkGoC42/TS2ond+PARCxTJvgTFUNDZovyQ/uAQ4EcpqqowKydcdmRKjg7A==
@@ -220,7 +220,7 @@
     aes-js "3.0.0"
     scrypt-js "3.0.1"
 
-"@ethersproject/keccak256@5.8.0", "@ethersproject/keccak256@^5.7.0", "@ethersproject/keccak256@^5.8.0":
+"@ethersproject/keccak256@5.8.0", "@ethersproject/keccak256@^5.8.0":
   version "5.8.0"
   resolved "https://registry.yarnpkg.com/@ethersproject/keccak256/-/keccak256-5.8.0.tgz#d2123a379567faf2d75d2aaea074ffd4df349e6a"
   integrity sha512-A1pkKLZSz8pDaQ1ftutZoaN46I6+jvuqugx5KYNeQOPqq+JZ0Txm7dlWesCHB5cndJSu5vP2VKptKf7cksERng==
@@ -255,7 +255,7 @@
   dependencies:
     "@ethersproject/logger" "^5.8.0"
 
-"@ethersproject/providers@5.8.0", "@ethersproject/providers@^5.7.0":
+"@ethersproject/providers@5.8.0":
   version "5.8.0"
   resolved "https://registry.yarnpkg.com/@ethersproject/providers/-/providers-5.8.0.tgz#6c2ae354f7f96ee150439f7de06236928bc04cb4"
   integrity sha512-3Il3oTzEx3o6kzcg9ZzbE+oCZYyY+3Zh83sKkn4s1DZfTUjIegHnN2Cm0kbn9YFy45FDVcuCLLONhU7ny0SsCw==
@@ -318,7 +318,7 @@
     elliptic "6.6.1"
     hash.js "1.1.7"
 
-"@ethersproject/solidity@5.8.0", "@ethersproject/solidity@^5.7.0":
+"@ethersproject/solidity@5.8.0", "@ethersproject/solidity@^5.8.0":
   version "5.8.0"
   resolved "https://registry.yarnpkg.com/@ethersproject/solidity/-/solidity-5.8.0.tgz#429bb9fcf5521307a9448d7358c26b93695379b9"
   integrity sha512-4CxFeCgmIWamOHwYN9d+QWGxye9qQLilpgTU0XhYs1OahkclF+ewO+3V1U0mvpiuQxm5EHHmv8f7ClVII8EHsA==
@@ -457,18 +457,18 @@
     long "^5.2.3"
     protobufjs "^7.3.2"
 
-"@layerzerolabs/lz-core@^3.0.88":
-  version "3.0.88"
-  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-core/-/lz-core-3.0.88.tgz#887308832ec0366fbc3965ea605347abda97c03d"
-  integrity sha512-6iLJBjCQ7LqIlm/Zd1cSxyF+cyUD3x5MRwu6I05JNUwrKsrcBjnHclPgTI+8iVFd2Seju9cIpoOigxnz5bCaXg==
+"@layerzerolabs/lz-core@^3.0.92":
+  version "3.0.92"
+  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-core/-/lz-core-3.0.92.tgz#455ea6597538477f804524fd009f87bc323ac2e7"
+  integrity sha512-zRmNu6m3cUXxK3BxnVAIT+kZNRkTc9u01RIg0qv7w4w3WlgwaY5ziX9jtLknQq+CKSO5ntsWclYPcVWMDUrQCQ==
 
-"@layerzerolabs/lz-corekit-solana@^3.0.88":
-  version "3.0.88"
-  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-corekit-solana/-/lz-corekit-solana-3.0.88.tgz#e9c47188506dbc1d56d01536121d3540a4309146"
-  integrity sha512-3/joRAEvsD96K/6OjVwAU4cF01KtmpNjxnoLG6zI8ePIK19PbVrLbbHTi241EhQQGCHMGzNBLxQj9AXCb5m1pA==
+"@layerzerolabs/lz-corekit-solana@^3.0.92":
+  version "3.0.92"
+  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-corekit-solana/-/lz-corekit-solana-3.0.92.tgz#141d9cebec168eb01052452e5552fbd15e4a6160"
+  integrity sha512-Gs7zkwmfxmboQ/Y4j/omycQ0Zl291+qIK/l4AfGqNkNQvwUDLxCZ2Hylr7806PKtbjwb0GgwKkEIdwDUUFkYtw==
   dependencies:
-    "@layerzerolabs/lz-core" "^3.0.88"
-    "@layerzerolabs/lz-utilities" "^3.0.88"
+    "@layerzerolabs/lz-core" "^3.0.92"
+    "@layerzerolabs/lz-utilities" "^3.0.92"
     "@metaplex-foundation/umi" "^0.9.2"
     "@metaplex-foundation/umi-eddsa-web3js" "^0.9.2"
     "@metaplex-foundation/umi-program-repository" "^0.9.2"
@@ -480,22 +480,21 @@
     bip39 "^3.1.0"
     ed25519-hd-key "^1.3.0"
     memoizee "^0.4.17"
-    tiny-invariant "^1.3.1"
 
-"@layerzerolabs/lz-definitions@^3.0.88":
-  version "3.0.88"
-  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-definitions/-/lz-definitions-3.0.88.tgz#924bedc532959152fc2e01f36882cf70bcf5130a"
-  integrity sha512-M/g4LWb5wTUukOE6sYVIRgyjUbnq2PWld1S0zAFigCHe58ev6rT/9W9YQsWgoBO46MKO3Vxfdq7geULa+BV+2g==
+"@layerzerolabs/lz-definitions@^3.0.92":
+  version "3.0.92"
+  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-definitions/-/lz-definitions-3.0.92.tgz#d71b847d8df3a0acf1c80582754d92fbd72bd7f1"
+  integrity sha512-86nnOqnZnh7zAivkvVaCOy7QM3DvMfBi9Fi4MvIBw2SRpgI03ZwlUTY9liia/jRFaM6h+XAhQv+ruv3PajyE7w==
   dependencies:
     tiny-invariant "^1.3.1"
 
-"@layerzerolabs/lz-foundation@^3.0.88":
-  version "3.0.88"
-  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-foundation/-/lz-foundation-3.0.88.tgz#d135a5a901b668c50002eab5b6e5aaf7148ae281"
-  integrity sha512-HFY2LfpgEwEXv2QhleAe/Ju/HrnPMzF/8pSxcXpS71iqRUrRMbBlxMSVPyfC1+6fHUbQAN7FbFYE597JFz4mZg==
+"@layerzerolabs/lz-foundation@^3.0.92":
+  version "3.0.92"
+  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-foundation/-/lz-foundation-3.0.92.tgz#61b29ca98f8d95b1cb7de2ce7ead5b26697e9a94"
+  integrity sha512-9Ly9AT8w45cNsgQWdSAMD3D5y0hLilAQq8Bq9rswlXi/psCFCpAKRche93BgHQixqlxDGcObYS7+krRSzzXLEw==
   dependencies:
-    "@layerzerolabs/lz-definitions" "^3.0.88"
-    "@layerzerolabs/lz-utilities" "^3.0.88"
+    "@layerzerolabs/lz-definitions" "^3.0.92"
+    "@layerzerolabs/lz-utilities" "^3.0.92"
     "@noble/ed25519" "^1.7.1"
     "@noble/hashes" "^1.3.2"
     "@noble/secp256k1" "^1.7.1"
@@ -503,34 +502,33 @@
     bech32 "^2.0.0"
     memoizee "^0.4.17"
 
-"@layerzerolabs/lz-serdes@^3.0.88":
-  version "3.0.88"
-  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-serdes/-/lz-serdes-3.0.88.tgz#9d1395e92d96980a20a524b54feed60b33ce67a6"
-  integrity sha512-ALE/Tk4trDRTtJnRep/HbzVxTq7DhjesM1DKq9lYU7n8wvlIAdyA1hMkEpH5nACqFIxsx1RzSRr8EXuknqIRDw==
+"@layerzerolabs/lz-serdes@^3.0.92":
+  version "3.0.92"
+  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-serdes/-/lz-serdes-3.0.92.tgz#317869b898a0788abdb2723f903aa0b0d1c7a4b8"
+  integrity sha512-5QmUkomAdSemgrhF/t+sDQOFZ64O3sBHiYXAJSMWn2opVlzCsG5l/LjAc3aj3efckpaEM5gGzFEfGmUV1A9lUQ==
   dependencies:
     "@coral-xyz/anchor" "^0.29.0"
-    "@layerzerolabs/lz-core" "^3.0.88"
-    "@layerzerolabs/lz-utilities" "^3.0.88"
-    "@layerzerolabs/tron-utilities" "^3.0.88"
+    "@layerzerolabs/lz-core" "^3.0.92"
+    "@layerzerolabs/lz-utilities" "^3.0.92"
+    "@layerzerolabs/tron-utilities" "^3.0.92"
     aptos "^1.20.0"
     bip39 "^3.1.0"
     ed25519-hd-key "^1.3.0"
-    ethers "^5.7.2"
+    ethers "^5.8.0"
     memoizee "^0.4.17"
-    tiny-invariant "^1.3.1"
     tronweb "^5.3.1"
 
-"@layerzerolabs/lz-solana-sdk-v2@^3.0.88":
-  version "3.0.88"
-  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-solana-sdk-v2/-/lz-solana-sdk-v2-3.0.88.tgz#0940c3a1bb18ce109cedf3c432b849c146fdccdf"
-  integrity sha512-+pjJd8fFYg/voEdX3ll5+fnI6bKNotNV2tldn+lqfq8BUdR1sLBI5lGs3seEqHyDO7stdKp5nA8T1Za1DRw+JQ==
+"@layerzerolabs/lz-solana-sdk-v2@^3.0.92":
+  version "3.0.92"
+  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-solana-sdk-v2/-/lz-solana-sdk-v2-3.0.92.tgz#98a50d73bde06a635b28245bfb692348751e3f85"
+  integrity sha512-IGcTmdeBCe+20qL671jtFglUMNeYR0ZT1oCOu0GyNuZFGwDwvrY1pjnPwixP9jw75eXmyvvNnHGIqnf+PBO3jg==
   dependencies:
-    "@layerzerolabs/lz-corekit-solana" "^3.0.88"
-    "@layerzerolabs/lz-definitions" "^3.0.88"
-    "@layerzerolabs/lz-foundation" "^3.0.88"
-    "@layerzerolabs/lz-serdes" "^3.0.88"
-    "@layerzerolabs/lz-utilities" "^3.0.88"
-    "@layerzerolabs/lz-v2-utilities" "^3.0.88"
+    "@layerzerolabs/lz-corekit-solana" "^3.0.92"
+    "@layerzerolabs/lz-definitions" "^3.0.92"
+    "@layerzerolabs/lz-foundation" "^3.0.92"
+    "@layerzerolabs/lz-serdes" "^3.0.92"
+    "@layerzerolabs/lz-utilities" "^3.0.92"
+    "@layerzerolabs/lz-v2-utilities" "^3.0.92"
     "@metaplex-foundation/beet" "^0.7.1"
     "@metaplex-foundation/beet-solana" "^0.4.0"
     "@metaplex-foundation/umi" "^0.9.2"
@@ -544,14 +542,14 @@
     bs58 "^5.0.0"
     tiny-invariant "^1.3.1"
 
-"@layerzerolabs/lz-utilities@^3.0.88":
-  version "3.0.88"
-  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-utilities/-/lz-utilities-3.0.88.tgz#541e04a900c6ecef10e75177bde4f78b1d30a0ad"
-  integrity sha512-m1URdjtsoxIBrSJ8PsBX4qSIha1pfcqmpKOQBThcHN2bQahKlnI3Q0UtLzO8WnKjnOLsJW0eQy+ajFdhyYiXfg==
+"@layerzerolabs/lz-utilities@^3.0.92":
+  version "3.0.92"
+  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-utilities/-/lz-utilities-3.0.92.tgz#58ee0b7317b0e7a459efb629e1283c86818f4db0"
+  integrity sha512-3CH6awoucRNRH9R3y30L8Mc2E7XKrINVS3p7abXQ+q3vGhqIFsolaHKMhCYWQuQE+HE4idq/FZaYooFurSxsBQ==
   dependencies:
-    "@ethersproject/bytes" "^5.7.0"
+    "@ethersproject/bytes" "^5.8.0"
     "@initia/initia.js" "1.0.4"
-    "@layerzerolabs/lz-definitions" "^3.0.88"
+    "@layerzerolabs/lz-definitions" "^3.0.92"
     "@solana/web3.js" "1.95.8"
     "@ton/core" "^0.59.0"
     "@ton/crypto" "^3.3.0"
@@ -560,33 +558,51 @@
     bip39 "^3.1.0"
     dayjs "^1.11.13"
     ed25519-hd-key "^1.3.0"
-    ethers "^5.7.2"
+    ethers "^5.8.0"
     memoizee "^0.4.17"
     picocolors "1.0.0"
     pino "^8.16.2"
 
-"@layerzerolabs/lz-v2-utilities@^3.0.88":
-  version "3.0.88"
-  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-v2-utilities/-/lz-v2-utilities-3.0.88.tgz#ad8bb10887777028e0252ce0ed3e45a14419c154"
-  integrity sha512-zAxywzdbe+1XoFnySrqECOcw5TUHoWLoAM9AR3rAnK57g20j2Fc3sdeb3U0vCa4kBXOQ/q2ZKMlqAQrXzsXU0g==
+"@layerzerolabs/lz-v2-utilities@^3.0.92":
+  version "3.0.92"
+  resolved "https://registry.yarnpkg.com/@layerzerolabs/lz-v2-utilities/-/lz-v2-utilities-3.0.92.tgz#63bee8ffb17e00c82df7914a5c41560538f79781"
+  integrity sha512-PZ3YqjB/MpoKenlW0aEArPirtISgkKhtTzeHUS5OLTZqRjfhw712K7EFgYWfyL+Zz3lmz2OZL+mNwOV7JqdYoA==
   dependencies:
-    "@ethersproject/abi" "^5.7.0"
-    "@ethersproject/address" "^5.7.0"
-    "@ethersproject/bignumber" "^5.7.0"
-    "@ethersproject/bytes" "^5.7.0"
-    "@ethersproject/keccak256" "^5.7.0"
-    "@ethersproject/solidity" "^5.7.0"
+    "@ethersproject/abi" "^5.8.0"
+    "@ethersproject/address" "^5.8.0"
+    "@ethersproject/bignumber" "^5.8.0"
+    "@ethersproject/bytes" "^5.8.0"
+    "@ethersproject/keccak256" "^5.8.0"
+    "@ethersproject/solidity" "^5.8.0"
     bs58 "^5.0.0"
     tiny-invariant "^1.3.1"
 
-"@layerzerolabs/tron-utilities@^3.0.88":
-  version "3.0.88"
-  resolved "https://registry.yarnpkg.com/@layerzerolabs/tron-utilities/-/tron-utilities-3.0.88.tgz#5ebb4ef3e392a1c16c4e51dbe1e7cc4d49107d43"
-  integrity sha512-i4YhAbZbmpIN836QiggoluFZQ9qTFSzIpuhMVZYReglbRIAPLgmlkktvvRQrfubjPVMD0Yz1LpMWBe/NBK7TDw==
+"@layerzerolabs/oft-v2-solana-sdk@^3.0.92":
+  version "3.0.92"
+  resolved "https://registry.yarnpkg.com/@layerzerolabs/oft-v2-solana-sdk/-/oft-v2-solana-sdk-3.0.92.tgz#14f41c74ddafaca657df7b029ee5a538c5d67301"
+  integrity sha512-+8BglQ3XAJwYZued81Fk3g/kuhOYOJSZYe5VhwR3lAZgrul+vlLJF+D+8kXq4xMZfUGh3JCF2LQxfEZ0PZwq8g==
   dependencies:
-    "@ethersproject/providers" "^5.7.0"
-    "@layerzerolabs/lz-utilities" "^3.0.88"
-    ethers "^5.7.2"
+    "@ethersproject/bytes" "^5.8.0"
+    "@layerzerolabs/lz-foundation" "^3.0.92"
+    "@layerzerolabs/lz-solana-sdk-v2" "^3.0.92"
+    "@layerzerolabs/lz-v2-utilities" "^3.0.92"
+    "@metaplex-foundation/beet" "^0.7.1"
+    "@metaplex-foundation/beet-solana" "^0.4.0"
+    "@metaplex-foundation/umi" "^0.9.2"
+    "@metaplex-foundation/umi-eddsa-web3js" "^0.9.2"
+    "@metaplex-foundation/umi-program-repository" "^0.9.2"
+    "@metaplex-foundation/umi-web3js-adapters" "^0.9.2"
+    "@solana/web3.js" "1.95.8"
+    bn.js "^5.2.1"
+    dotenv "^16.3.1"
+
+"@layerzerolabs/tron-utilities@^3.0.92":
+  version "3.0.92"
+  resolved "https://registry.yarnpkg.com/@layerzerolabs/tron-utilities/-/tron-utilities-3.0.92.tgz#52638b52e8ed5daa21f652b90412f5b2206a4172"
+  integrity sha512-HRad0Brxve1M+ix8vMlICTwIlkJdlUsVjZtnClLz7QQDe4myu2x22XQPxAdlYqiTECVzsBFd6TqZeCXBMBGS8g==
+  dependencies:
+    "@layerzerolabs/lz-utilities" "^3.0.92"
+    ethers "^5.8.0"
     tronweb "^5.3.1"
 
 "@ledgerhq/devices@8.4.4", "@ledgerhq/devices@^8.4.4":
@@ -1816,6 +1832,11 @@ dot-case@^3.0.4:
     no-case "^3.0.4"
     tslib "^2.0.3"
 
+dotenv@^16.3.1:
+  version "16.5.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.5.0.tgz#092b49f25f808f020050051d1ff258e404c78692"
+  integrity sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==
+
 dunder-proto@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/dunder-proto/-/dunder-proto-1.0.1.tgz#d7ae667e1dc83482f8b70fd0f6eefc50da30f58a"
@@ -1964,7 +1985,7 @@ ethereum-cryptography@^2.0.0:
     "@scure/bip32" "1.4.0"
     "@scure/bip39" "1.3.0"
 
-ethers@^5.7.2:
+ethers@^5.8.0:
   version "5.8.0"
   resolved "https://registry.yarnpkg.com/ethers/-/ethers-5.8.0.tgz#97858dc4d4c74afce83ea7562fe9493cedb4d377"
   integrity sha512-DUq+7fHrCg1aPDFCHx6UIPb3nmt2XMpM7Y/g2gLhsl3lIBqeAfOJIl1qEvRf2uq3BiKxmh6Fh5pfp2ieyek7Kg==

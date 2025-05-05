@@ -2,8 +2,10 @@ import * as anchor from "@coral-xyz/anchor";
 const { setup } = require("./common");
 import {
   EndpointProgram,
+  ExecutorPDADeriver,
   simulateTransaction,
   UlnProgram,
+  SetConfigType,
 } from "@layerzerolabs/lz-solana-sdk-v2";
 import { PublicKey, Keypair } from "@solana/web3.js";
 
@@ -14,13 +16,23 @@ import { PublicKey, Keypair } from "@solana/web3.js";
     const common = setup();
 
     const ulnProgram = new UlnProgram.Uln(common.SEND_LIB_PROGRAM_ID);
+    const [executorPda] = new ExecutorPDADeriver(common.EXECUTOR_PROGRAM_ID).config();
+    const expected: UlnProgram.types.ExecutorConfig = {
+      maxMessageSize: 10000,
+      executor: executorPda,
+    };
 
     const ix = await common.endpoint
-      .setSendLibrary(
+      .setOappConfig(
+        provider.connection,
         common.deployerKeypair.publicKey,
         common.initiatorPDA,
         ulnProgram.program,
-        common.PEER_EVM_EID
+        common.PEER_EVM_EID,
+        {
+          configType: SetConfigType.EXECUTOR,
+          value: expected,
+        },
       );
 
     await common.sendAndConfirm(provider.connection, [common.deployerKeypair], [ix]);
