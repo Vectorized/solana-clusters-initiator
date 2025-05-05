@@ -35,7 +35,7 @@ import {
         sendLib.programId
       ),
     );
-    // console.log(quoteIxRemainingAccounts);
+    console.log(quoteIxRemainingAccounts);
 
     const msg = Buffer.from([0x12, 0x34, 0x56]);
     const options = common.makeLzOptions(100000, 0);

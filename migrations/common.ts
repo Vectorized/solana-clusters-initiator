@@ -19,7 +19,7 @@ function setup() {
   
   const PEER_SEED = Buffer.from("Peer");
   const INITIATOR_SEED = Buffer.from("Initiator");
-  const INITIATOR_ID = 0; 
+  const INITIATOR_ID = 1; 
   const ENDPOINT_PUBLIC_KEY = new PublicKey("76y77prsiCMvXMjuoZ5VRrhG5qYBrUMYTE5WgHqgjEn6");
   const SEND_LIB_PROGRAM_ID = new PublicKey("7a4WjyR8VZ7yZz5XJAKm39BUGn5iT9CKcv2pmG9tdXVH");
   const EXECUTOR_PROGRAM_ID = new PublicKey("6doghB248px58JSSwG4qejQ46kFMW4AMj7vzJnWZHNZn");
@@ -43,6 +43,8 @@ function setup() {
     program.programId
   );
   console.log(`initiatorPDA: ${initiatorPDA}`);
+  const initiatorPDABytes = '0x' + Buffer.from(bs58.decode('' + initiatorPDA)).toString('hex');
+  console.log(`initiatorPDA (hex): ${initiatorPDABytes}`);
 
   const [peerPDA, peerBump] = PublicKey.findProgramAddressSync(
     [PEER_SEED, initiatorPDA.toBuffer(), (new BN(PEER_EVM_EID)).toArrayLike(Buffer, "be", 4)],

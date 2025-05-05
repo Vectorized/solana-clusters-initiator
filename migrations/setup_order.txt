@@ -1,8 +1,10 @@
 ./run_migration.sh init_initiator
+./run_migration.sh set_peer
 ./run_migration.sh init_send_library
 ./run_migration.sh set_send_library
 ./run_migration.sh init_oapp_nonce
 ./run_migration.sh init_oapp_config
 ./run_migration.sh set_executor_config
+# ./run_migration.sh set_send_uln_config # Somehow this messes things up.
 ./run_migration.sh quote
 ./run_migration.sh post

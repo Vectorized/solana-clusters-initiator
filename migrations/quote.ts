@@ -35,7 +35,7 @@ import {
         sendLib.programId
       ),
     );
-    // console.log(remainingAccounts);
+    console.log(remainingAccounts);
 
     const requiredNativeFee = (
       await common.program.methods
