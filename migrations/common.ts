@@ -26,7 +26,7 @@ function setup() {
   const DVN_PROGRAM_ID = new PublicKey("HtEYV4xB4wvsj5fgTkcfuChYpvGYzgzwvNhgDZQNh7wW");
   const PRICE_FEED_PROGRAM_ID = new PublicKey("8ahPGPjEbpgGaZx2NV1iG5Shj7TDwvsjkEDcGWjt94TP");
   
-  const PEER_EVM_ADDRESS = "0x581296f83d7464df72ca4f1e840b65633e016ef0";
+  const PEER_EVM_ADDRESS = "0xD18E087D6dFEb24b94F5F7F85d01fdFD08004E02";
   const PEER_EVM_ADDRESS_BYTES = Array.from(arrayify(hexZeroPad(PEER_EVM_ADDRESS, 32)));
   const PEER_EVM_EID = eids.BASE_SEPOLIA;
   const SOLANA_EID = eids.SOLANA_DEVNET;

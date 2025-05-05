@@ -38,7 +38,7 @@ import {
     console.log(quoteIxRemainingAccounts);
 
     const msg = Buffer.from([0x12, 0x34, 0x56]);
-    const options = common.makeLzOptions(100000, 0);
+    const options = common.makeLzOptions(1000000, 0);
 
     const requiredNativeFee = (
       await common.program.methods
