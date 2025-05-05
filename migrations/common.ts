@@ -1,4 +1,5 @@
 import * as anchor from "@coral-xyz/anchor";
+import bs58 from "bs58";
 import { Program, BN } from "@coral-xyz/anchor";
 import { PublicKey, Keypair } from "@solana/web3.js";
 import * as fs from "fs";
@@ -43,6 +44,8 @@ function setup() {
     program.programId
   );
   console.log(`peerPDA: ${peerPDA}`);
+  const peerPDABytes = '0x' + Buffer.from(bs58.decode('' + peerPDA)).toString('hex');
+  console.log(`peerPDA (hex): ${peerPDABytes}`);
   
   const endpoint = new EndpointProgram.Endpoint(
     ENDPOINT_PUBLIC_KEY
@@ -75,6 +78,18 @@ function setup() {
     console.log(`Tx hash: ${hash}`);
     await connection.confirmTransaction(hash, "confirmed");
   }
+
+  function makeLzOptions(gas: number | BN, value: number | BN): Buffer {
+    const gasBN = BN.isBN(gas) ? gas : new BN(gas);
+    const valueBN = BN.isBN(value) ? value : new BN(value);
+    return Buffer.concat([
+      Buffer.from([0, 3, 1, 0]), 
+      Buffer.from([!valueBN.isZero() ? 0x21 : 0x11]), 
+      Buffer.from([1]), 
+      gasBN.toArrayLike(Buffer, "be", 16), 
+      !valueBN.isZero() ? valueBN.toArrayLike(Buffer, "be", 16) : Buffer.alloc(0)
+    ]);
+  }
   
   return {
     sendAndConfirm,
@@ -94,7 +109,8 @@ function setup() {
     peerPDA,
     peerBump,
     endpoint,
-    eids
+    eids,
+    makeLzOptions
   };
 };
 

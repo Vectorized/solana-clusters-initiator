@@ -22,7 +22,7 @@ import {
       );
     
     const payer = common.deployerKeypair.publicKey;
-    const remainingAccounts = await common.endpoint.getQuoteIXAccountMetaForCPI(
+    const quoteIxRemainingAccounts = await common.endpoint.getQuoteIXAccountMetaForCPI(
       connection,
       payer,
       {
@@ -35,27 +35,66 @@ import {
         sendLib.programId
       ),
     );
-    // console.log(remainingAccounts);
+    // console.log(quoteIxRemainingAccounts);
+
+    const msg = Buffer.from([0x12, 0x34, 0x56]);
+    const options = common.makeLzOptions(100000, 0);
 
     const requiredNativeFee = (
       await common.program.methods
         .quote({
           dstEid: common.PEER_EVM_EID,
           receiver: common.PEER_EVM_ADDRESS_BYTES,
-          msg: Buffer.from([0x12, 0x34, 0x56]),
-          options: common.makeLzOptions(100000, 1000000000),
+          msg: msg,
+          options: options,
           payInLzToken: false, 
           endpoint: common.endpoint.program,       
         })
         .accounts({
           initiator: common.initiatorPDA, 
         })
-        .remainingAccounts(remainingAccounts) 
+        .remainingAccounts(quoteIxRemainingAccounts) 
         .signers([common.deployerKeypair])
         .view()
     ).nativeFee;
 
     console.log("Required Native Fee:", requiredNativeFee.toString());
+
+    const sendIxRemainingAccounts = await common.endpoint.getSendIXAccountMetaForCPI(
+      connection,
+      payer,
+      {
+        dstEid: common.PEER_EVM_EID,
+        srcEid: common.SOLANA_EID,
+        sender: common.hexlify(common.initiatorPDA.toBytes()),
+        receiver: common.PEER_EVM_ADDRESS,
+      },
+      new UlnProgram.Uln(
+        sendLib.programId
+      ),
+    );
+
+    console.log("Send Instruction Accounts:", sendIxRemainingAccounts);
+
+    const tx = await common.program.methods
+      .post({
+        dstEid: common.PEER_EVM_EID,
+        msg: msg,
+        options: options,
+        nativeFee: requiredNativeFee, 
+        lzTokenFee: new anchor.BN(0),
+        endpoint: common.endpoint.program,
+      })
+      .accounts({
+        user: common.deployerKeypair.publicKey,
+        peer: common.peerPDA,
+        initiator: common.initiatorPDA, 
+      })
+      .remainingAccounts(sendIxRemainingAccounts)
+      .signers([common.deployerKeypair])
+      .rpc();
+    console.log(`Transaction Signature: ${tx}`);
+    console.log("Post Success!"); 
   } catch (err) {
     console.error("Transaction failed:", err.message);
     console.error("Full Error:", err);

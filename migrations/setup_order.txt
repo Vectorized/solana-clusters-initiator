@@ -1,0 +1,6 @@
+./run_migration.sh init_initiator
+./run_migration.sh init_send_library
+./run_migration.sh set_send_library
+./run_migration.sh init_oapp_nonce
+./run_migration.sh set_oapp_executor
+./run_migration.sh init_uln_config
